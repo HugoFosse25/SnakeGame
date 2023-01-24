@@ -6,6 +6,7 @@ public class Snake : MonoBehaviour {
     Vector2 dir;
     void Start() {
     
+        Time.timeScale = 0.20f;
         dir = Vector2.right;
     }
 
