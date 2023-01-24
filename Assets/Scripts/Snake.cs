@@ -5,10 +5,14 @@ using UnityEngine;
 public class Snake : MonoBehaviour 
 {
     Vector2 dir;
+    List<Transform> segments = new List<Transform>();   //Liste qui contient tout les segments du serpents
+    [SerializeField] Transform segmentPrefab;
     void Start()
     {
         Time.timeScale = 0.20f;
         dir = Vector2.right;
+
+        segments.Add(transform);    //Le premier segment est la tête du serpent
     }
 
     void Update()
@@ -33,9 +37,27 @@ public class Snake : MonoBehaviour
 
     private void FixedUpdate()
     {
+
+        for (int i = segments.Count - 1; i > 0; i--)
+        {
+            segments[i].position = segments[i - 1].position;
+        }
+
         float x = Mathf.Round(transform.position.x) + dir.x;    //On arrondi la position du serpent pour sécuriser les valeurs exotiques
         float y = Mathf.Round(transform.position.y) + dir.y;
 
         transform.position = new Vector2(x, y);     //On applique la nouvelle position
+    }
+
+    void Grow() //On ajoute un segment
+    {
+        Transform segment = Instantiate(segmentPrefab);
+        segment.position = segments[segments.Count - 1].position;
+        segments.Add(segment);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision) 
+    {
+        if(collision.gameObject.tag == "Food") Grow(); //Si le serpent touche de la nourriture il grandit
     }
 }
