@@ -5,7 +5,7 @@ using UnityEngine;
 public class Snake : MonoBehaviour 
 {
     Vector2 dir;
-    List<Transform> segments = new List<Transform>();   //Liste qui contient tout les segments du serpents
+    public List<Transform> segments = new List<Transform>();   //Liste qui contient tout les segments du serpents
     [SerializeField] Transform segmentPrefab;
     void Start()
     {
@@ -54,6 +54,8 @@ public class Snake : MonoBehaviour
         Transform segment = Instantiate(segmentPrefab);
         segment.position = segments[segments.Count - 1].position;
         segments.Add(segment);
+
+        GameManager.instance.score++;
     }
 
     private void OnTriggerEnter2D(Collider2D collision) 
@@ -63,6 +65,6 @@ public class Snake : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision) 
     {
-        Destroy(GetComponent<Snake>());
+        GameManager.instance.gameOver();
     }
 }
