@@ -60,4 +60,9 @@ public class Snake : MonoBehaviour
     {
         if(collision.gameObject.tag == "Food") Grow(); //Si le serpent touche de la nourriture il grandit
     }
+
+    private void OnCollisionEnter2D(Collision2D collision) 
+    {
+        Destroy(GetComponent<Snake>());
+    }
 }

@@ -2933,6 +2933,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38c3d83102ac8d748ab2fb8a4d2f84ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  segmentPrefab: {fileID: 1911719421202990502, guid: f25e13720f1ba684d8357ded5b444a0a, type: 3}
 --- !u!61 &270409462
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2971,9 +2972,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.0001
+  m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -3150,7 +3151,7 @@ GameObject:
   - component: {fileID: 1846522389}
   m_Layer: 0
   m_Name: Food
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
