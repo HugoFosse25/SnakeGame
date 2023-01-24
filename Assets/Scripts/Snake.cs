@@ -9,10 +9,11 @@ public class Snake : MonoBehaviour
     [SerializeField] Transform segmentPrefab;
     void Start()
     {
-        Time.timeScale = 0.20f;
+        Time.timeScale = GameManager.instance.currentTimeScale;
         dir = Vector2.right;
 
         segments.Add(transform);    //Le premier segment est la tête du serpent
+
     }
 
     void Update()
@@ -56,6 +57,7 @@ public class Snake : MonoBehaviour
         segments.Add(segment);
 
         GameManager.instance.score++;
+        GameManager.instance.loadScoreDisplay();
     }
 
     private void OnTriggerEnter2D(Collider2D collision) 
